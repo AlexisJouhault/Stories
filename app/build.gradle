@@ -1,0 +1,66 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+
+apply from: '../config/dependencies.gradle'
+
+android {
+    compileSdkVersion 26
+
+    defaultConfig {
+        applicationId "com.exemple.wattpad.stories"
+        minSdkVersion 21
+        targetSdkVersion 26
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+
+        debug {
+
+            buildConfigField("String", "API_HOST", '"https://www.wattpad.com"')
+        }
+
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+
+            buildConfigField("String", "API_HOST", '"https://www.wattpad.com"')
+        }
+    }
+
+    compileOptions {
+        targetCompatibility 1.8
+        sourceCompatibility 1.8
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
+
+    implementation androidSupportDependencies.appcompat
+    implementation androidSupportDependencies.constraintlayout
+    implementation androidSupportDependencies.recyclerview
+
+    implementation retrofitDependencies.adapterRx
+    implementation retrofitDependencies.converterGson
+    implementation retrofitDependencies.retrofit
+    implementation retrofitDependencies.retrofitLogger
+    implementation rxDependencies.rxJava
+    implementation rxDependencies.rxAndroid
+    implementation rxDependencies.rxbindingv7
+    implementation butterknifeDependencies.butterknife
+    implementation visualsDependencies.glide
+    implementation visualsDependencies.circleImageView
+    annotationProcessor butterknifeDependencies.compiler
+    annotationProcessor visualsDependencies.glideCompiler
+
+    testImplementation testDependencies.junit
+    testImplementation testDependencies.mockito
+    androidTestImplementation connectedTestDependencies.runner
+    androidTestImplementation connectedTestDependencies.espresso
+}

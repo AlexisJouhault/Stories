@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <android.support.v7.widget.AppCompatImageView
+        android:scaleType="centerCrop"
+        android:id="@+id/story_cover"
+        android:layout_width="@dimen/listelement_story_cover_width"
+        android:layout_height="0dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintDimensionRatio="h,6:9"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:src="@mipmap/ic_launcher" />
+
+    <android.support.v7.widget.AppCompatTextView
+        android:id="@+id/story_title"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:ellipsize="end"
+        android:maxLines="3"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/story_author_avatar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/story_cover"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="@string/long_string" />
+
+    <android.support.v7.widget.AppCompatImageView
+        android:id="@+id/appCompatImageView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/background_author"
+        app:layout_constraintBottom_toBottomOf="@+id/story_author_avatar"
+        app:layout_constraintEnd_toEndOf="@+id/story_author_avatar"
+        app:layout_constraintStart_toStartOf="@+id/story_author_name"
+        app:layout_constraintTop_toTopOf="@+id/story_author_avatar" />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/story_author_avatar"
+        android:layout_width="@dimen/listelement_story_author_avatar_height"
+        android:layout_height="@dimen/listelement_story_author_avatar_height"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:src="@mipmap/ic_launcher_round" />
+
+    <android.support.v7.widget.AppCompatTextView
+        android:id="@+id/story_author_name"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="8dp"
+        android:paddingEnd="@dimen/listelement_story_author_name_padding_right"
+        android:paddingStart="@dimen/listelement_story_author_name_padding_left"
+        android:textColor="@android:color/white"
+        app:layout_constraintBottom_toBottomOf="@+id/story_author_avatar"
+        app:layout_constraintEnd_toStartOf="@+id/story_author_avatar"
+        app:layout_constraintTop_toTopOf="@+id/story_author_avatar"
+        tools:text="John Doe" />
+
+</android.support.constraint.ConstraintLayout>

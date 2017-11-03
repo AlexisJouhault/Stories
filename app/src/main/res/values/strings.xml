@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Stories</string>
+    <string name="long_string">This is a very very very very very very very very very very very very very very very very very very very very very very very very very very very long string</string>
+    <string name="search_title">Search</string>
+</resources>

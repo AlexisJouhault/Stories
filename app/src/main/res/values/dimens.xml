@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="listelement_story_cover_width">70dp</dimen>
+    <dimen name="icon_size">24dp</dimen>
+
+
+    <dimen name="listelement_story_author_avatar_height">36dp</dimen>
+    <!-- should be half of avatar height -->
+    <dimen name="listelement_story_author_background_radius">18dp</dimen>
+    <dimen name="listelement_story_author_name_padding_left">10dp</dimen>
+    <dimen name="listelement_story_author_name_padding_right">2dp</dimen>
+    <dimen name="listelement_story_divider_height">1dip</dimen>
+</resources>
