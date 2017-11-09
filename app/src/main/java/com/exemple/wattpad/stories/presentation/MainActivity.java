@@ -2,6 +2,7 @@ package com.exemple.wattpad.stories.presentation;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
@@ -23,6 +24,7 @@ import java.util.concurrent.TimeUnit;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
 
@@ -31,6 +33,8 @@ import static android.view.View.VISIBLE;
 
 public class MainActivity extends AppCompatActivity implements MainView {
 
+    private static final int LIST_SPAN = 1;
+    private static final int GRID_SPAN = 3;
     private final long DEBOUNCE = 800;
     private MainPresenter mMainPresenter = new MainPresenter();
     private StoriesListAdapter mStoriesListAdapter;
@@ -42,6 +46,7 @@ public class MainActivity extends AppCompatActivity implements MainView {
     View mSpinner;
 
     private SearchView mSearchView;
+    private boolean gridEnabled = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,8 +59,15 @@ public class MainActivity extends AppCompatActivity implements MainView {
     private void setupRecyclerView() {
         mStoriesListAdapter = new StoriesListAdapter(this);
         mStoriesRecyclerView.setAdapter(mStoriesListAdapter);
-        mStoriesRecyclerView.addItemDecoration(new VerticalDividerDecoration(this));
-        mStoriesRecyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
+        setUpLayoutManager(getStoriesSpan());
+    }
+
+    private void setUpLayoutManager(int span) {
+        mStoriesRecyclerView.setLayoutManager(new GridLayoutManager(this, span, LinearLayoutManager.VERTICAL, false));
+    }
+
+    private int getStoriesSpan() {
+        return gridEnabled ? GRID_SPAN : LIST_SPAN;
     }
 
     @Override
@@ -108,6 +120,12 @@ public class MainActivity extends AppCompatActivity implements MainView {
     @Override
     public void defaultError() {
         displayError("Something went wrong");
+    }
+
+    @OnClick(R.id.switch_layout_button)
+    public void onLayoutSwitch() {
+        gridEnabled = !gridEnabled;
+        setUpLayoutManager(getStoriesSpan());
     }
 
     private void displayError(String message) {

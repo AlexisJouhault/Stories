@@ -28,6 +28,7 @@ public class MainPresenter {
 
     public MainPresenter() {
         mGetMainStoriesList = new GetMainStoriesList();
+        mResults = new ArrayList<>();
     }
 
     public void setView(MainView view) {
